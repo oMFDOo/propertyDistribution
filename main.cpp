@@ -159,7 +159,7 @@ int main() {
 		}
 		sort(GenesList.begin(), GenesList.end(), compare);
 
-		if (g % 500 == 0) {
+		if (g % SKIP == 0) {
 			cout << g << "-fit : " << GenesList[0].getFit() << endl;
 			GenesList[0].printGenes();
 		}
