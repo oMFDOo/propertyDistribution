@@ -25,7 +25,7 @@ int main() {
 
 
 	ifstream devideFile, propertyFile;
-	string dFile = "./divide", pFile = "./properties"; // GEN_LENGTH
+	string dFile = "./divide", pFile = "./res/properties"; // GEN_LENGTH
 	dFile += to_string(NUM_OF_CHILD) + ".txt";
 	pFile += to_string(GEN_LENGTH) + ".txt";
 
