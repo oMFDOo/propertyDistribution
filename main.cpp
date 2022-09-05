@@ -3,14 +3,14 @@
 
 void createGenes();
 
-// À¯ÀüÀÚ ¸®½ºÆ®
+// ìœ ì „ì ë¦¬ìŠ¤íŠ¸
 vector<Genes> GenesList;
 
-// ¹°°ÇÀÇ °¡Ä¡º¸°ü
+// ë¬¼ê±´ì˜ ê°€ì¹˜ë³´ê´€
 vector<int> Properties;
-// Áö½Äº° ¹èºĞ ºñÀ²
+// ì§€ì‹ë³„ ë°°ë¶„ ë¹„ìœ¨
 vector<double> Child;
-// ºñÀ²·Î °è»êÇÑ ¸ñÇ¥ Àç»ê°ª
+// ë¹„ìœ¨ë¡œ ê³„ì‚°í•œ ëª©í‘œ ì¬ì‚°ê°’
 vector<int> Target;
 
 bool compare(const Genes& p1, const Genes& p2) {
@@ -20,7 +20,7 @@ bool compare(const Genes& p1, const Genes& p2) {
 
 int main() {
 
-	// Àç»ê µ¥ÀÌÅÍ¿Í ºñÀ² µ¥ÀÌÅÍ ÀÔ·Â
+	// ì¬ì‚° ë°ì´í„°ì™€ ë¹„ìœ¨ ë°ì´í„° ì…ë ¥
 	int inputType = 0, propertiSum = 0;
 
 
@@ -33,9 +33,9 @@ int main() {
 	propertyFile.open(pFile);
 
 
-	// Àç»ê µ¥ÀÌÅÍ ÀÔÃâ·Â
+	// ì¬ì‚° ë°ì´í„° ì…ì¶œë ¥
 	if (propertyFile.is_open()) {
-		cout << pFile << "ÆÄÀÏ read \n";
+		cout << pFile << "íŒŒì¼ read \n";
 		int num;
 		while (propertyFile >> num) {
 			Properties.push_back(num);
@@ -44,8 +44,8 @@ int main() {
 		propertyFile.close();
 	}
 	else {
-		cout << pFile << "ÆÄÀÏ read ½ÇÆĞ : ·£´ı µ¥ÀÌÅÍ »ı¼º\n";
-		// Àç»ê µ¥ÀÌÅÍ ¼³Á¤
+		cout << pFile << "íŒŒì¼ read ì‹¤íŒ¨ : ëœë¤ ë°ì´í„° ìƒì„±\n";
+		// ì¬ì‚° ë°ì´í„° ì„¤ì •
 		for (int i = 0; i < GEN_LENGTH; i++) {
 			int temp = rand() % 128;
 			Properties.push_back(temp);
@@ -53,21 +53,21 @@ int main() {
 		}
 	}
 
-	// ÀÚ½Ä µ¥ÀÌÅÍ ÀÔ·Â
+	// ìì‹ ë°ì´í„° ì…ë ¥
 	if (devideFile.is_open()) {
-		cout << dFile << "ÆÄÀÏ read \n";
+		cout << dFile << "íŒŒì¼ read \n";
 		double num;
 		while (devideFile >> num) {
 			Child.push_back(num);
-			// Á¤´ä µ¥ÀÌÅÍ ¼³Á¤
+			// ì •ë‹µ ë°ì´í„° ì„¤ì •
 			Target.push_back(propertiSum * num);
 		}
 		devideFile.close();
 	}
 	else {
-		cout << dFile << "ÆÄÀÏ read ½ÇÆĞ : ·£´ı µ¥ÀÌÅÍ »ı¼º\n";
+		cout << dFile << "íŒŒì¼ read ì‹¤íŒ¨ : ëœë¤ ë°ì´í„° ìƒì„±\n";
 		int per = 100;
-		// ºñÀ² µ¥ÀÌÅÍ ¼³Á¤
+		// ë¹„ìœ¨ ë°ì´í„° ì„¤ì •
 		for (int i = 0; i < NUM_OF_CHILD; i++) {
 			int temp = rand() % per;
 			if (temp > 20) {
@@ -78,7 +78,7 @@ int main() {
 			}
 			per -= temp;
 			Child.push_back(temp / 100.0);
-			// Á¤´ä µ¥ÀÌÅÍ ¼³Á¤
+			// ì •ë‹µ ë°ì´í„° ì„¤ì •
 			Target.push_back(propertiSum * temp / 100);
 		}
 	}
@@ -86,7 +86,7 @@ int main() {
 
 	//cin >> inputType;
 	//if (inputType == 1) {
-	//    // Àç»ê µ¥ÀÌÅÍ ¼³Á¤
+	//    // ì¬ì‚° ë°ì´í„° ì„¤ì •
 	//    srand(static_cast<unsigned int>(std::time(0)));
 	//    for (int i = 0; i < GEN_LENGTH; i++) {
 	//        int temp = rand() % 128;
@@ -94,7 +94,7 @@ int main() {
 	//        propertiSum += temp;
 	//    }
 	//    int per = 100;
-	//    // ºñÀ² µ¥ÀÌÅÍ ¼³Á¤
+	//    // ë¹„ìœ¨ ë°ì´í„° ì„¤ì •
 	//    for (int i = 0; i < NUM_OF_CHILD; i++) {
 	//        int temp = rand() % per;
 	//        if (temp > 20) {
@@ -105,23 +105,23 @@ int main() {
 	//        }
 	//        per -= temp;
 	//        Child.push_back(temp / 100.0);
-	//        // Á¤´ä µ¥ÀÌÅÍ ¼³Á¤
+	//        // ì •ë‹µ ë°ì´í„° ì„¤ì •
 	//        Target.push_back(propertiSum * temp / 100);
 	//    }
 	//}
 	//else {
 	//    int temp;
-	//    cout << "Àç»ê µ¥ÀÌÅÍ ÀÔ·Â : \n";
+	//    cout << "ì¬ì‚° ë°ì´í„° ì…ë ¥ : \n";
 	//    for (int i = 0; i < GEN_LENGTH; i++) {
 	//        cin >> temp;
 	//        Properties.push_back(temp);
 	//        propertiSum += temp;
 	//    }
-	//    cout << "ºñÀ² µ¥ÀÌÅÍ ÀÔ·Â : \n";
+	//    cout << "ë¹„ìœ¨ ë°ì´í„° ì…ë ¥ : \n";
 	//    for (int i = 0; i < NUM_OF_CHILD; i++) {
 	//        cin >> temp;
 	//        Child.push_back(temp);
-	//        // Á¤´ä µ¥ÀÌÅÍ ¼³Á¤
+	//        // ì •ë‹µ ë°ì´í„° ì„¤ì •
 	//        Target.push_back(propertiSum * temp);
 	//    }
 	//}
@@ -145,15 +145,15 @@ int main() {
 
 
 
-	// ÃÊ±â À¯ÀüÀÚ »ı¼º
+	// ì´ˆê¸° ìœ ì „ì ìƒì„±
 	for (int i = 0; i < N_OF_GEN; i++) {
 		Genes g;
 		GenesList.push_back(g);
 	}
 
-	// ¹İº¹ ÁöÁ¡ : ¼¼´ë ¹İº¹ - ITER
+	// ë°˜ë³µ ì§€ì  : ì„¸ëŒ€ ë°˜ë³µ - ITER
 	for (int g = 0; g <= ITER; g++) {
-		// ¼±ÅÃ : ¿¤¸®Æ® Å½»ö
+		// ì„ íƒ : ì—˜ë¦¬íŠ¸ íƒìƒ‰
 		for (int i = 0; i < N_OF_GEN; i++) {
 			int fit = GenesList[i].calFitness(Properties, Target);
 		}
@@ -164,10 +164,10 @@ int main() {
 			GenesList[0].printGenes();
 		}
 
-		// ÇÑ 4ÆÛ¼¾Æ®´Â ¿¤¸®Æ®·Î µÒ
+		// í•œ 4í¼ì„¼íŠ¸ëŠ” ì—˜ë¦¬íŠ¸ë¡œ ë‘ 
 		int eliteIdx = N_OF_GEN * ELITE / 100;
 		bool isin[GEN_LENGTH][GEN_LENGTH] = { 0, };
-		// ±³Â÷
+		// êµì°¨
 		for (int i = eliteIdx + 1; i < N_OF_GEN - 1; ) {
 			vector<int> c1, c2;
 			c1 = GenesList[i].getGenes();
@@ -186,19 +186,19 @@ int main() {
 			i += 2;
 		}
 
-		// µ¹¿¬º¯ÀÌ
+		// ëŒì—°ë³€ì´
 		for (int i = eliteIdx + 1; i < N_OF_GEN; i++) {
-			// µ¹¿¬º¯ÀÌ È®·ü
+			// ëŒì—°ë³€ì´ í™•ë¥ 
 			if (getRandom()) {
 				GenesList[i].mutate();
 			}
 		}
 	}
-	cout << "ÈŞ¿ì";
+	cout << "íœ´ìš°";
 }
 
 
-// °¢ ¼¼´ë À¯ÀüÀÚ ¼ö ¸¸Å­ »ı¼º
+// ê° ì„¸ëŒ€ ìœ ì „ì ìˆ˜ ë§Œí¼ ìƒì„±
 void createGenes() {
 	for (int i = 0; i < N_OF_GEN; i++) {
 		Genes temp;
